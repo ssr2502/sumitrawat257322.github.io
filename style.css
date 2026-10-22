@@ -1498,5 +1498,40 @@ a:hover .animated-arrow {
 
   .tilt-card {
     transform: none !important;
+
+     
+/* Performance-friendly animations */
+*,
+*::before,
+*::after {
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.reveal {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tilt-card:hover,
+.project-card:hover,
+.skill-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Disable expensive motion for users who prefer less animation */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
   }
 }
